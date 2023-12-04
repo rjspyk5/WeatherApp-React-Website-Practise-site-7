@@ -19,10 +19,17 @@ function App() {
       .then(response => response.json())
       .then(json => {
         fetch(
-          `https://api.openweathermap.org/data/3.0/onecall?lat=${json[0].lat}&lon=${json[0].lan}&appid=ca946eaa34591a75c28c0222a15e2e36`
+          `http://api.openweathermap.org/data/2.5/forecast?lat=${json[0].lat}&lon=${json[0].lon}&appid=ca946eaa34591a75c28c0222a15e2e36`
         )
           .then(response => response.json())
-          .then(json => console.log(json));
+          .then(jsn => {
+            console.log(jsn);
+            fetch(
+              `https://api.openweathermap.org/data/2.5/weather?lat=${json[0].lat}&lon=${json[0].lon}&appid=ca946eaa34591a75c28c0222a15e2e36`
+            )
+              .then(response => response.json())
+              .then(res => console.log(res));
+          });
       });
   }, [contextt]);
 
