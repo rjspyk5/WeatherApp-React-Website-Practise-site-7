@@ -4,7 +4,8 @@ import { DataAndInputRcvrContext } from '../../../App';
 
 export const SerachBox = () => {
   const [inputext, setinputext] = useState('');
-  const [contextt] = useContext(DataAndInputRcvrContext);
+  const [contextt, currentWeather, fivedayweatherr, Celcius, setCelcius] =
+    useContext(DataAndInputRcvrContext);
   return (
     <div className='my-6 flex'>
       <input
@@ -23,9 +24,19 @@ export const SerachBox = () => {
       </button>
 
       <div className='flex ml-auto text-white'>
-        <button className='px-1'>C</button>
+        <button
+          className={`${Celcius && 'text-red-400'} px-1 font-bold`}
+          onClick={() => setCelcius(true)}
+        >
+          C
+        </button>
         <p className='pt-[6px]'>|</p>
-        <button className='px-1'>F</button>
+        <button
+          className={`${!Celcius && 'text-red-500'} px-1  font-bold`}
+          onClick={() => setCelcius(false)}
+        >
+          F
+        </button>
       </div>
     </div>
   );

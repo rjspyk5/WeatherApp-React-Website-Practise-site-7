@@ -20,7 +20,6 @@ export const TimeAndCountry = () => {
       <Loading />
     );
 
-  console.log(currentWeather);
   return (
     <>
       <div className='flex text-center text-white'>

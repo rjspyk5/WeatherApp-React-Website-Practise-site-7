@@ -8,6 +8,8 @@ function App() {
   const [countryname, setcountryname] = useState('london');
   const [currentWeather, setcurrentWeather] = useState([]);
   const [fivedayweatherr, setfivedayweatherr] = useState([]);
+  const [Celcius, setCelcius] = useState(true);
+
   const contextt = data => {
     setcountryname(data);
   };
@@ -37,7 +39,13 @@ function App() {
     <div className=' bg-gradient-to-tr from-[#080839] to-[#1C9AB9]  mx-auto h-screen px-5 py-5 shadow-xl bg-slate-800-gray-900'>
       <div className=' md:px-24 lg:px-56'>
         <DataAndInputRcvrContext.Provider
-          value={[contextt, currentWeather, fivedayweatherr]}
+          value={[
+            contextt,
+            currentWeather,
+            fivedayweatherr,
+            Celcius,
+            setCelcius,
+          ]}
         >
           <MainHeader></MainHeader>
           <MainBody></MainBody>

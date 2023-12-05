@@ -3,9 +3,16 @@ import { DataAndInputRcvrContext } from '../../../App';
 import { WiHumidity } from 'react-icons/wi';
 import { MdWindPower } from 'react-icons/md';
 import { RiTempHotLine } from 'react-icons/ri';
+import { dataCovertor } from '../../assetsAndFunction/DataConvertor';
 
 export const CurrentWeather = () => {
-  const [, currentWeather] = useContext(DataAndInputRcvrContext);
+  const [, currentWeather, fivedayweatherr, Celcius, setCelcius] = useContext(
+    DataAndInputRcvrContext
+  );
+  console.log(fivedayweatherr);
+  const currentWeatherMainData = currentWeather.main;
+
+  const data = dataCovertor(currentWeatherMainData, Celcius);
 
   return (
     <div className='flex justify-around text-white my-3'>
