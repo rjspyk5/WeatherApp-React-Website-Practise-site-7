@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SerachBox } from './SerachBox';
+import { DataAndInputRcvrContext } from '../../../App';
 
 export const Menu = () => {
+  const [contextt] = useContext(DataAndInputRcvrContext);
+
   const cityname = [
     { id: 1, city: 'dhaka' },
     { id: 2, city: 'barisal' },
@@ -16,6 +19,7 @@ export const Menu = () => {
           <button
             key={element.id}
             className=' text-zinc-50 hover:text-red-500 focus:text-green-400'
+            onClick={() => contextt(element.city)}
           >
             {element.city[0].toUpperCase() + element.city.slice(1)}
           </button>

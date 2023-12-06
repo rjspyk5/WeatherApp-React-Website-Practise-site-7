@@ -4,6 +4,7 @@ import { WiHumidity } from 'react-icons/wi';
 import { MdWindPower } from 'react-icons/md';
 import { RiTempHotLine } from 'react-icons/ri';
 import { dataCovertor } from '../../assetsAndFunction/DataConvertor';
+import { Loading } from '../Loading/Loading';
 
 export const CurrentWeather = () => {
   const [, currentWeather, fivedayweatherr, Celcius, setCelcius] = useContext(
@@ -11,27 +12,31 @@ export const CurrentWeather = () => {
   );
   console.log(fivedayweatherr);
   const currentWeatherMainData = currentWeather.main;
-
   const data = dataCovertor(currentWeatherMainData, Celcius);
+  console.log(data);
 
   return (
     <div className='flex justify-around text-white my-3'>
       <div></div>
       <div className='ml-[88px]'>
-        <h3 className='text-5xl'>30</h3>
+        {data != undefined ? (
+          <h3 className='text-5xl'>{data[0].temp} </h3>
+        ) : (
+          <Loading />
+        )}
       </div>
       <div>
         <div className='flex'>
           <RiTempHotLine className='mt-1' />
-          <p>Real Fell :</p>
+          <p>Real Fell : {data != undefined ? data[1].feels_like : null} </p>
         </div>
         <div className='flex'>
           <WiHumidity className='mt-1' />
-          <p> Humidity :</p>
+          <p> Humidity :{data != undefined ? data[1].feels_like : null}</p>
         </div>
         <div className='flex'>
           <MdWindPower className='mt-1' />
-          <p> Wind :</p>
+          <p> Wind :{data != undefined ? data[1].feels_like : null}</p>
         </div>
       </div>
     </div>
