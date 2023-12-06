@@ -6,10 +6,10 @@ export const Menu = () => {
   const [contextt] = useContext(DataAndInputRcvrContext);
 
   const cityname = [
-    { id: 1, city: 'dhaka' },
+    { id: 1, city: 'Dhaka' },
     { id: 2, city: 'barisal' },
-    { id: 3, city: 'Sylet' },
-    { id: 4, city: 'Rajsahi' },
+    { id: 3, city: 'Sylhet' },
+    { id: 4, city: 'Rajshahi' },
   ];
 
   return (

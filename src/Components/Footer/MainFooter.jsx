@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export const MainFooter = () => {
   return (
-    <div>Footer</div>
-  )
-}
+    <div className='text-center text-white mt-20 opacity-30'>
+      All rights reserved by Rakibul
+    </div>
+  );
+};

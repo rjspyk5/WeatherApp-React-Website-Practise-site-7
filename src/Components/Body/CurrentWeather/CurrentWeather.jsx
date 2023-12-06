@@ -10,17 +10,23 @@ export const CurrentWeather = () => {
   const [, currentWeather, fivedayweatherr, Celcius, setCelcius] = useContext(
     DataAndInputRcvrContext
   );
-  console.log(fivedayweatherr);
+
   const currentWeatherMainData = currentWeather.main;
   const data = dataCovertor(currentWeatherMainData, Celcius);
-  console.log(data);
-
+  const iconID = currentWeather.weather && currentWeather.weather[0].icon;
   return (
-    <div className='flex justify-around text-white my-3'>
-      <div></div>
-      <div className='ml-[88px]'>
+    <div className='flex justify-between items-center text-white my-3'>
+      <div>
+        <img
+          src={
+            iconID ? `https://openweathermap.org/img/wn/${iconID}@2x.png` : null
+          }
+          alt='Weather Icon'
+        />
+      </div>
+      <div className=''>
         {data != undefined ? (
-          <h3 className='text-5xl'>{data[0].temp} </h3>
+          <h3 className='text-5xl '>{data[0].temp} </h3>
         ) : (
           <Loading />
         )}

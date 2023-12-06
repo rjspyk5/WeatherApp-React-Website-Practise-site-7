@@ -5,13 +5,13 @@ import { MainHeader } from './Components/Header/MainHeader';
 export const DataAndInputRcvrContext = createContext();
 
 function App() {
-  const [countryname, setcountryname] = useState('london');
+  const [countryname, setcountryname] = useState('Mehendiganj');
   const [currentWeather, setcurrentWeather] = useState([]);
   const [fivedayweatherr, setfivedayweatherr] = useState([]);
   const [Celcius, setCelcius] = useState(true);
 
   const contextt = data => {
-    setcountryname(data);
+    setcountryname(() => data);
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function App() {
   }, [countryname]);
 
   return (
-    <div className=' bg-gradient-to-tr from-[#080839] to-[#1C9AB9]  mx-auto h-screen px-5 py-5 shadow-xl bg-slate-800-gray-900'>
+    <div className=' bg-gradient-to-tr from-[#080839] to-[#1C9AB9]  mx-auto px-5 py-5 shadow-xl bg-slate-800-gray-900'>
       <div className=' md:px-24 lg:px-56'>
         <DataAndInputRcvrContext.Provider
           value={[
@@ -45,6 +45,7 @@ function App() {
             fivedayweatherr,
             Celcius,
             setCelcius,
+            countryname,
           ]}
         >
           <MainHeader></MainHeader>
