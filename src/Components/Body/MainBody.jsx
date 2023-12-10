@@ -4,20 +4,38 @@ import { SunriseAndSet } from './SunriseAndSet/SunriseAndSet';
 import { HourlyForecast } from './HourlyForecast/HourlyForecast';
 import { CurrentWeather } from './CurrentWeather/CurrentWeather';
 import { DataAndInputRcvrContext } from '../../App';
-import { dataCovertor } from '../assetsAndFunction/DataConvertor';
 
 export const MainBody = () => {
   const [, currentWeather, fivedayweatherr] = useContext(
     DataAndInputRcvrContext
   );
-  console.log(fivedayweatherr);
+  const ListOfWeather = fivedayweatherr && fivedayweatherr.list;
+  let dailyWeather = [];
+
+  const DailyWeatherList =
+    ListOfWeather &&
+    ListOfWeather.filter(el => {
+      const unique_date = el.dt_txt.slice(0, 10);
+      const test = dailyWeather.find(el => unique_date === el);
+      if (unique_date != test) {
+        dailyWeather.push(unique_date);
+      }
+      return unique_date != test && unique_date != test && el;
+    });
+
   return (
     <>
       <TimeAndCountry></TimeAndCountry>
       <CurrentWeather></CurrentWeather>
       <SunriseAndSet></SunriseAndSet>
-      <HourlyForecast weatherType='Hourly'></HourlyForecast>
-      <HourlyForecast weatherType='Daily'></HourlyForecast>
+      <HourlyForecast
+        weatherType='Hourly'
+        WeatherDetails={ListOfWeather}
+      ></HourlyForecast>
+      <HourlyForecast
+        weatherType='Daily'
+        WeatherDetails={DailyWeatherList}
+      ></HourlyForecast>
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-export const HourlyForecast = props => {
+export const HourlyForecast = ({ weatherType, WeatherDetails }) => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -25,7 +25,7 @@ export const HourlyForecast = props => {
 
   return (
     <div className='text-white my-10'>
-      <h6>{props.weatherType} FORECAST</h6>
+      <h6>{weatherType} FORECAST</h6>
       <hr />
       <div>
         <Carousel
