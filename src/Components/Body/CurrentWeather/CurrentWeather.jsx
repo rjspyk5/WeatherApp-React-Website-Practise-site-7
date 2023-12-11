@@ -14,7 +14,7 @@ export const CurrentWeather = () => {
   const currentWeatherMainData = currentWeather.main;
   const data = dataCovertor(currentWeatherMainData, Celcius);
   const iconID = currentWeather.weather && currentWeather.weather[0].icon;
-  console.log(currentWeather);
+
   return (
     <div className='flex justify-between items-center text-white my-3'>
       <div>
