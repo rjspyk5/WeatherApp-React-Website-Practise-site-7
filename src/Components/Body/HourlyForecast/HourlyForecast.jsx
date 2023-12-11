@@ -57,14 +57,14 @@ export const HourlyForecast = ({
               console.log(el.dt_txt.slice(10));
               return (
                 <div key={index}>
-                  <p>{el.dt_txt.slice(0, 10)}</p>
-                  {Time && <p>{el.dt_txt.slice(10)}</p>}
+                  <p className='pl-[16px]'>{el.dt_txt.slice(0, 10)}</p>
+                  {Time && <p className='pl-[16px]'>{el.dt_txt.slice(10)}</p>}
 
                   <img
                     src={`https://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`}
                     alt=''
                   />
-                  <p>{converted_data[0].temp}</p>
+                  <p className='pl-[35px]'>{converted_data[0].temp}</p>
                 </div>
               );
             })}
