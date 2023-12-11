@@ -54,7 +54,7 @@ export const HourlyForecast = ({
           >
             {WeatherDetails.map((el, index) => {
               const converted_data = dataCovertor(el.main, Celcius);
-              console.log(el.dt_txt.slice(10));
+
               return (
                 <div key={index}>
                   <p className='pl-[16px]'>{el.dt_txt.slice(0, 10)}</p>

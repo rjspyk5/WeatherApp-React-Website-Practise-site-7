@@ -14,6 +14,7 @@ export const CurrentWeather = () => {
   const currentWeatherMainData = currentWeather.main;
   const data = dataCovertor(currentWeatherMainData, Celcius);
   const iconID = currentWeather.weather && currentWeather.weather[0].icon;
+  console.log(currentWeather);
   return (
     <div className='flex justify-between items-center text-white my-3'>
       <div>
@@ -38,11 +39,17 @@ export const CurrentWeather = () => {
         </div>
         <div className='flex'>
           <WiHumidity className='mt-1' />
-          <p> Humidity :{data != undefined ? data[1].feels_like : null}</p>
+          <p> Humidity :{data != undefined ? data[5].humidity : null}</p>
         </div>
         <div className='flex'>
           <MdWindPower className='mt-1' />
-          <p> Wind :{data != undefined ? data[1].feels_like : null}</p>
+          <p>
+            {' '}
+            Wind :
+            {currentWeather != undefined && currentWeather.wind != undefined
+              ? currentWeather.wind.speed
+              : null}
+          </p>
         </div>
       </div>
     </div>
