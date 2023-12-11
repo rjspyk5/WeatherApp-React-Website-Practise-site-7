@@ -6,12 +6,18 @@ import { CurrentWeather } from './CurrentWeather/CurrentWeather';
 import { DataAndInputRcvrContext } from '../../App';
 
 export const MainBody = () => {
-  const [, currentWeather, fivedayweatherr] = useContext(
-    DataAndInputRcvrContext
-  );
+  const [
+    contextt,
+    currentWeather,
+    fivedayweatherr,
+    Celcius,
+    setCelcius,
+    countryname,
+  ] = useContext(DataAndInputRcvrContext);
   const ListOfWeather = fivedayweatherr && fivedayweatherr.list;
   let dailyWeather = [];
 
+  const time = true;
   const DailyWeatherList =
     ListOfWeather &&
     ListOfWeather.filter(el => {
@@ -31,10 +37,13 @@ export const MainBody = () => {
       <HourlyForecast
         weatherType='Hourly'
         WeatherDetails={ListOfWeather}
+        Celcius={Celcius}
+        Time={time}
       ></HourlyForecast>
       <HourlyForecast
         weatherType='Daily'
         WeatherDetails={DailyWeatherList}
+        Celcius={Celcius}
       ></HourlyForecast>
     </>
   );

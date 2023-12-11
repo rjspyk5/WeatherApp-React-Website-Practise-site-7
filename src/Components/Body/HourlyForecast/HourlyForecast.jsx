@@ -1,8 +1,15 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { Loading } from '../Loading/Loading';
+import { dataCovertor } from '../../assetsAndFunction/DataConvertor';
 
-export const HourlyForecast = ({ weatherType, WeatherDetails }) => {
+export const HourlyForecast = ({
+  weatherType,
+  WeatherDetails,
+  Celcius,
+  Time,
+}) => {
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -28,27 +35,43 @@ export const HourlyForecast = ({ weatherType, WeatherDetails }) => {
       <h6>{weatherType} FORECAST</h6>
       <hr />
       <div>
-        <Carousel
-          swipeable={false}
-          draggable={false}
-          showDots={false}
-          responsive={responsive}
-          ssr={true} // means to render carousel on server-side.
-          infinite={true}
-          autoPlaySpeed={1000}
-          keyBoardControl={true}
-          customTransition='all .5'
-          transitionDuration={500}
-          containerClass='carousel-container'
-          removeArrowOnDeviceType={['tablet', 'mobile']}
-          dotListClass='custom-dot-list-style'
-          itemClass='carousel-item-padding-40-px'
-        >
-          <div>Item 1</div>
-          <div>Item 2</div>
-          <div>Item 3</div>
-          <div>Item 4</div>
-        </Carousel>
+        {WeatherDetails ? (
+          <Carousel
+            swipeable={false}
+            draggable={false}
+            showDots={false}
+            responsive={responsive}
+            ssr={true} // means to render carousel on server-side.
+            infinite={true}
+            autoPlaySpeed={1000}
+            keyBoardControl={true}
+            customTransition='all .5'
+            transitionDuration={500}
+            containerClass='carousel-container'
+            removeArrowOnDeviceType={['tablet', 'mobile']}
+            dotListClass='custom-dot-list-style'
+            itemClass='carousel-item-padding-40-px'
+          >
+            {WeatherDetails.map((el, index) => {
+              const converted_data = dataCovertor(el.main, Celcius);
+              console.log(el.dt_txt.slice(10));
+              return (
+                <div key={index}>
+                  <p>{el.dt_txt.slice(0, 10)}</p>
+                  {Time && <p>{el.dt_txt.slice(10)}</p>}
+
+                  <img
+                    src={`https://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`}
+                    alt=''
+                  />
+                  <p>{converted_data[0].temp}</p>
+                </div>
+              );
+            })}
+          </Carousel>
+        ) : (
+          <Loading />
+        )}
       </div>
     </div>
   );
