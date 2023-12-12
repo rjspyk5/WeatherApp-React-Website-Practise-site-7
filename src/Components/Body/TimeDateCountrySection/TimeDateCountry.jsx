@@ -1,12 +1,14 @@
 import React, { useContext } from 'react';
 import { DataAndInputRcvrContext } from '../../../App';
 import { Loading } from '../Loading/Loading';
+import { currentTimeCalculator } from '../../assetsAndFunction/CurrentTimeCalculator';
 
 export const TimeAndCountry = () => {
   const [, currentWeather, fivedayweatherr] = useContext(
     DataAndInputRcvrContext
   );
-
+  const DateDaynameTime =
+    currentWeather && currentTimeCalculator(currentWeather.timezone);
   const countryname = currentWeather.name;
 
   const weatherType =
@@ -24,7 +26,9 @@ export const TimeAndCountry = () => {
     <>
       <div className='flex text-center text-white'>
         <p className='mx-auto opacity-50'>
-          Tuesday, 31 May 2023 | Local time : 11:24 AM
+          {DateDaynameTime
+            ? `${DateDaynameTime.date} , ${DateDaynameTime.dayName} | Local time : ${DateDaynameTime.time} `
+            : null}
         </p>
       </div>
       <h3 className='text-center text-white font-bold my-6'>
