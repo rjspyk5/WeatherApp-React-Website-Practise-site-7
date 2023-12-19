@@ -1,15 +1,17 @@
 import React, { useContext } from 'react';
 import { DataAndInputRcvrContext } from '../../../App';
 import { Loading } from '../Loading/Loading';
-import { currentTimeCalculator } from '../../assetsAndFunction/CurrentTimeCalculator';
 
 export const TimeAndCountry = () => {
-  const [, currentWeather, fivedayweatherr] = useContext(
-    DataAndInputRcvrContext
-  );
-  const DateDaynameTime =
-    currentWeather && currentTimeCalculator(currentWeather.timezone);
-  const countryname = currentWeather.name;
+  const [
+    contextt,
+    currentWeather,
+    fivedayweatherr,
+    Celcius,
+    setCelcius,
+    countryname,
+    DateDaynameTime,
+  ] = useContext(DataAndInputRcvrContext);
 
   const weatherType =
     currentWeather &&

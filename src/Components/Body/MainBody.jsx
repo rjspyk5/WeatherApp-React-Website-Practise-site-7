@@ -13,6 +13,7 @@ export const MainBody = () => {
     Celcius,
     setCelcius,
     countryname,
+    DateDaynameTime,
   ] = useContext(DataAndInputRcvrContext);
   const ListOfWeather = fivedayweatherr && fivedayweatherr.list;
   let dailyWeather = [];
@@ -29,6 +30,9 @@ export const MainBody = () => {
       return unique_date != test && unique_date != test && el;
     });
 
+  const HourlyWeatherList =
+    ListOfWeather && ListOfWeather.filter((el, index) => index < 4);
+
   return (
     <>
       <TimeAndCountry></TimeAndCountry>
@@ -36,7 +40,7 @@ export const MainBody = () => {
       <SunriseAndSet></SunriseAndSet>
       <HourlyForecast
         weatherType='Hourly'
-        WeatherDetails={ListOfWeather}
+        WeatherDetails={HourlyWeatherList}
         Celcius={Celcius}
         Time={time}
       ></HourlyForecast>

@@ -2,6 +2,8 @@ import React, { createContext, useEffect, useState } from 'react';
 import { MainFooter } from './Components/Footer/MainFooter';
 import { MainBody } from './Components/Body/Mainbody';
 import { MainHeader } from './Components/Header/MainHeader';
+import { currentTimeCalculator } from './Components/assetsAndFunction/CurrentTimeCalculator';
+
 export const DataAndInputRcvrContext = createContext();
 
 function App() {
@@ -35,6 +37,9 @@ function App() {
       });
   }, [countryname]);
 
+  const DateDaynameTime =
+    currentWeather && currentTimeCalculator(currentWeather.timezone);
+
   return (
     <div
       style={{ fontFamily: 'Rajdhani' }}
@@ -49,6 +54,7 @@ function App() {
             Celcius,
             setCelcius,
             countryname,
+            DateDaynameTime,
           ]}
         >
           <MainHeader></MainHeader>
