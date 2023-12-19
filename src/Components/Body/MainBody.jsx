@@ -33,6 +33,8 @@ export const MainBody = () => {
   const HourlyWeatherList =
     ListOfWeather && ListOfWeather.filter((el, index) => index < 4);
 
+  console.log(HourlyWeatherList);
+
   return (
     <>
       <TimeAndCountry></TimeAndCountry>
