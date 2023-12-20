@@ -58,7 +58,7 @@ export const HourlyForecast = ({
               return (
                 <div key={index}>
                   <p className='pl-[16px]'>{el.dt_txt.slice(0, 10)}</p>
-                  {Time && <p className='pl-[16px]'>{el.dt_txt.slice(10)}</p>}
+                  {Time && <p className='pl-[16px]'>{Time[index]}</p>}
 
                   <img
                     src={`https://openweathermap.org/img/wn/${el.weather[0].icon}@2x.png`}

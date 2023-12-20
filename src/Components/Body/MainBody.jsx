@@ -4,6 +4,7 @@ import { SunriseAndSet } from './SunriseAndSet/SunriseAndSet';
 import { HourlyForecast } from './HourlyForecast/HourlyForecast';
 import { CurrentWeather } from './CurrentWeather/CurrentWeather';
 import { DataAndInputRcvrContext } from '../../App';
+import { twelvehoursTimeFormater } from '../assetsAndFunction/twelvehoursTimeFormater';
 
 export const MainBody = () => {
   const [
@@ -18,7 +19,6 @@ export const MainBody = () => {
   const ListOfWeather = fivedayweatherr && fivedayweatherr.list;
   let dailyWeather = [];
 
-  const time = true;
   const DailyWeatherList =
     ListOfWeather &&
     ListOfWeather.filter(el => {
@@ -33,7 +33,7 @@ export const MainBody = () => {
   const HourlyWeatherList =
     ListOfWeather && ListOfWeather.filter((el, index) => index < 4);
 
-  console.log(HourlyWeatherList);
+  const time = HourlyWeatherList && twelvehoursTimeFormater(HourlyWeatherList);
 
   return (
     <>
