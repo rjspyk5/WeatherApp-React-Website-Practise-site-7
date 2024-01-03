@@ -11,6 +11,7 @@ export const SerachBox = () => {
       <input
         value={inputext}
         onChange={e => setinputext(e.target.value)}
+        onKeyDown={event => event.key === 'Enter' && contextt(inputext)}
         className='placeholder:italic w-96 rounded-md px-5 py-2 w-4/6  sm:text-sm shadow-md focus:outline-green-400'
         type='text'
         placeholder=' Search Your Location Weather'
