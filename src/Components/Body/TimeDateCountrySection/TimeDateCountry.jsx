@@ -25,8 +25,6 @@ export const TimeAndCountry = () => {
       <Loading />
     );
 
-  countryDetails && countryDetails != [] && console.log(countryDetails);
-
   return (
     <>
       <div className='flex text-center text-white'>
@@ -36,8 +34,18 @@ export const TimeAndCountry = () => {
             : null}
         </p>
       </div>
-      <h3 className='text-center text-white font-bold my-6'>
-        {countryname ? countryname : <Loading />}
+      <h3 className='text-center text-white font-bold mt-6 mb-2'>
+        {countryDetails != [] && countryDetails[0] ? (
+          countryDetails[0].name
+        ) : (
+          <Loading />
+        )}
+      </h3>
+      <h3 className='text-center text-white font-bold'>
+        {countryDetails &&
+          countryDetails != [] &&
+          countryDetails[0] &&
+          countryDetails[0].state}
       </h3>
       {weatherType}
     </>

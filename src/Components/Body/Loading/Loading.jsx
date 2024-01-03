@@ -3,8 +3,8 @@ import SkeletonLoader from 'tiny-skeleton-loader-react';
 
 export const Loading = () => {
   return (
-    <div>
+    <>
       <SkeletonLoader />
-    </div>
+    </>
   );
 };

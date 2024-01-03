@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { MainFooter } from './Components/Footer/MainFooter';
-import { MainBody } from './Components/Body/Mainbody';
 import { MainHeader } from './Components/Header/MainHeader';
 import { currentTimeCalculator } from './Components/assetsAndFunction/CurrentTimeCalculator';
+import { Body } from './Components/Body/Body';
 
 export const DataAndInputRcvrContext = createContext();
 
@@ -12,12 +12,17 @@ function App() {
   const [currentWeather, setcurrentWeather] = useState([]);
   const [fivedayweatherr, setfivedayweatherr] = useState([]);
   const [Celcius, setCelcius] = useState(true);
+  const [datanotfound, setdatanotfound] = useState(false);
 
   const contextt = data => {
     setcountryname(() => data);
   };
 
   useEffect(() => {
+    setcountryDetails([]);
+    setcurrentWeather([]);
+    setfivedayweatherr([]);
+
     fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${countryname}&appid=ca946eaa34591a75c28c0222a15e2e36`
     )
@@ -36,7 +41,9 @@ function App() {
               .then(response => response.json())
               .then(res => setcurrentWeather(res));
           });
-      });
+        setdatanotfound(false);
+      })
+      .catch(() => setdatanotfound(true));
   }, [countryname]);
 
   const DateDaynameTime =
@@ -58,10 +65,11 @@ function App() {
             countryname,
             DateDaynameTime,
             countryDetails,
+            datanotfound,
           ]}
         >
           <MainHeader></MainHeader>
-          <MainBody></MainBody>
+          <Body></Body>
           <MainFooter> </MainFooter>
         </DataAndInputRcvrContext.Provider>
       </div>
