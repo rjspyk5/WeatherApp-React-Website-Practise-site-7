@@ -8,6 +8,7 @@ export const DataAndInputRcvrContext = createContext();
 
 function App() {
   const [countryname, setcountryname] = useState('Mehendiganj');
+  const [countryDetails, setcountryDetails] = useState([]);
   const [currentWeather, setcurrentWeather] = useState([]);
   const [fivedayweatherr, setfivedayweatherr] = useState([]);
   const [Celcius, setCelcius] = useState(true);
@@ -22,6 +23,7 @@ function App() {
     )
       .then(response => response.json())
       .then(json => {
+        setcountryDetails(json);
         fetch(
           `http://api.openweathermap.org/data/2.5/forecast?lat=${json[0].lat}&lon=${json[0].lon}&appid=ca946eaa34591a75c28c0222a15e2e36`
         )
@@ -55,6 +57,7 @@ function App() {
             setCelcius,
             countryname,
             DateDaynameTime,
+            countryDetails,
           ]}
         >
           <MainHeader></MainHeader>

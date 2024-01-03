@@ -11,6 +11,7 @@ export const TimeAndCountry = () => {
     setCelcius,
     countryname,
     DateDaynameTime,
+    countryDetails,
   ] = useContext(DataAndInputRcvrContext);
 
   const weatherType =
@@ -23,6 +24,8 @@ export const TimeAndCountry = () => {
     ) : (
       <Loading />
     );
+
+  countryDetails && countryDetails != [] && console.log(countryDetails);
 
   return (
     <>
