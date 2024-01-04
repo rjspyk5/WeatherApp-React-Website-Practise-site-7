@@ -47,7 +47,14 @@ function App() {
   }, [countryname]);
 
   const DateDaynameTime =
-    currentWeather && currentTimeCalculator(currentWeather.timezone);
+    currentWeather &&
+    currentWeather.coord &&
+    currentWeather.coord.lat &&
+    currentTimeCalculator(
+      currentWeather.timezone,
+      currentWeather.coord.lat,
+      currentWeather.coord.lon
+    );
 
   return (
     <div

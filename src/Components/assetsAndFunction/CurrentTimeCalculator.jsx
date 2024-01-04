@@ -1,5 +1,16 @@
-export const currentTimeCalculator = timezoneOffset => {
+export const currentTimeCalculator = (timezoneOffset, lat, lon) => {
+  const timezoneInHour = timezoneOffset / 3600;
   const currentUTCDate = new Date();
+  const datee = new Date();
+
+  datee.setHours(
+    datee.getHours() + datee.getTimezoneOffset() / 60 + timezoneInHour
+  );
+  datee.setMinutes(
+    datee.getMinutes() + datee.getTimezoneOffset() / 60 + timezoneInHour * 60
+  );
+  console.log(datee.toTimeString());
+
   const localOffset = currentUTCDate.getTimezoneOffset() * 60; // Convert minutes to seconds
   const offsetInSeconds = timezoneOffset + localOffset;
 
